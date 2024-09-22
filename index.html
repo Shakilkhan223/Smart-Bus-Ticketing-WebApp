@@ -520,18 +520,22 @@
               <!-- total price  -->
               <div class="flex justify-between items-center">
                 <p class="text-lg font-medium">Total Price</p>
-                <p class="text-lg font-medium">BDT <span>****</span></p>
+                <p class="text-lg font-medium">
+                  BDT <span id="total-price">****</span>
+                </p>
               </div>
 
               <!-- have a cupon here -->
               <div class="relative my-5">
                 <input
+                  id="cupon-input"
                   disabled
                   class="w-full p-5 rounded-xl text-sm text-[#030712]/40 outline-none"
                   type="text"
                   placeholder="Have Any Copupon?"
                 />
                 <button
+                  id="cupon-btn"
                   class="px-4 py-[10px] bg-primary text-white rounded-xl absolute right-2 top-1/2 -translate-y-1/2 hover:bg-[#030712]/80 duration-200 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled
                 >
