@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paribahan - Online Bus Ticket Booking WebApp</title>
+
+    <!-- google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome  -->
+    <script
+      src="https://kit.fontawesome.com/c2acd37326.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- tailwind css  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              raleway: ["Raleway", "sans-serif"],
+              inter: ["Inter", "sans-serif"],
+            },
+            colors: {
+              text: "#030712",
+              primary: "#1DD100",
+              secondary: "#F78C9C",
+              tertiary: "#FFBF0F",
+              lightColor: "rgba(3, 7, 18, 0.5)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .seat-number {
+        padding: 17px 44px;
+        background-color: #f7f8f8;
+        color: rgba(3, 7, 18, 0.5);
+        font-size: 18px;
+        font-weight: medium;
+        border-radius: 12px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .seat-number:hover {
+        background-color: #030712;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="font-inter">
+    <main>
+      <!-- best offer section  -->
+      <section class="max-w-screen-xl mx-auto py-32">
+        <h2 class="text-4xl font-bold text-center font-raleway">
+          Best offers for you
+        </h2>
+      </section>
+      <!-- best offer section  -->
+
+      <!-- seat booking section  -->
+      <section
+        class="bg-[#F7F8F8] py-32 border-t-[3px] border-primary rounded-t-[80px]"
+      >
+        <!-- destination details  -->
+        <div
+          class="max-w-screen-xl mx-auto bg-white px-8 rounded-2xl shadow-sm mb-8"
+        >
+          <div class="grid grid-cols-12 gap-8">
+            <div class="col-span-8 py-8">
+              <!-- header  -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <div><img src="images/bus-logo.png" alt="" /></div>
+                  <div>
+                    <h1 class="text-3xl font-bold mb-2">Greenline Paribahan</h1>
+                    <p class="text-[#030712]/70">Coach-009-WEB ! AC_Business</p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex items-center gap-2 bg-[#1DD100]/15 px-4 py-3 rounded-xl text-primary"
+                >
+                  <img src="images/seat-green.png" alt="" />
+                  <p><span id="avaiable-seats">40</span> Seats Left</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-1">
+              <img src="images/info-devider.png" alt="" />
+            </div>
+            <div class="col-span-3"></div>
+          </div>
+        </div>
+        <!-- destination details  -->
+
+        <!-- seat booking option  -->
+        <div
+          class="max-w-screen-xl mx-auto px-5 bg-white px-8 py-5 rounded-2xl shadow-sm grid grid-cols-3 gap-5"
+        >
+          <div
+            class="col-span-2 border-r-2 border-lightColor border-dashed pr-8"
+          >
+            <div>
+              <h2 class="text-2xl font-semibold font-raleway color-text">
+                Select Your Seat
+              </h2>
+            </div>
+            <div class="border-b-2 border-dashed my-4"></div>
+            <div class="flex justify-between items-center">
+              <p class="text-lightColor">
+                <i class="fa-solid fa-couch text-2xl"></i>
+                <span class="text-lg font-medium">Available</span>
+              </p>
+              <p class="text-primary">
+                <i class="fa-solid fa-couch text-2xl"></i>
+                <span class="text-lg font-medium">Selected</span>
+              </p>
+            </div>
+            <div class="border-b-2 border-dashed my-4"></div>
+
+            <!-- select seat here  -->
+            <div class="flex justify-end">
+              <div
+                class="driver-seat my-6 px-10 py-3 rounded-xl bg-[#030712]/10 inline-block"
+              >
+                <img src="images/wheel.svg" alt="" />
+              </div>
+            </div>
+
+            <!-- seat number here  -->
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                A
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                A1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                A2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                A3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                A4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                B
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                B1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                B2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                B3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                B4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                C
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                C1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                C2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                C3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                C4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                D
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                D1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                D2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                D3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                D4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                E
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                E1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                E2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                E3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                E4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                F
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                F1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                F2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                F3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                F4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                G
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                G1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                G2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                G3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                G4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                H
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                H1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                H2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                H3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                H4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                I
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                I1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                I2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                I3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                I4
+              </button>
+            </div>
+            <div class="grid grid-cols-12 gap-8 items-center my-6">
+              <p
+                class="text-lg font-medium text-[#030712]/50 col-span-1 text-center"
+              >
+                J
+              </p>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                J1
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                J2
+              </button>
+              <div class="col-span-3"></div>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                J3
+              </button>
+              <button
+                onclick="handleSelectSeat(this)"
+                class="seat-number col-span-2"
+              >
+                J4
+              </button>
+            </div>
+
+            <!-- select seat here  -->
+          </div>
+
+          <!-- seat list and total section  -->
+          <div class="pl-2">
+            <div>
+              <h2 class="text-2xl font-semibold font-raleway color-text">
+                Selected Seat Details
+              </h2>
+            </div>
+            <div class="border-b-2 border-dashed my-4"></div>
+
+            <!-- seat list  -->
+            <div class="p-8 bg-[#F7F8F8] rounded-xl mt-6">
+              <!-- seat header  -->
+              <div
+                class="flex justify-between items-center text-base font-medium"
+              >
+                <p>
+                  Seat
+                  <span
+                    id="total-seats"
+                    class="bg-primary text-white px-1 text-sm rounded-full"
+                    >0</span
+                  >
+                </p>
+                <p>Class</p>
+                <p>Price</p>
+              </div>
+
+              <div class="border-b-2 border-dashed my-4"></div>
+
+              <!-- seat list here  -->
+              <ul id="seat-list">
+                <h3
+                  id="no-seat"
+                  class="text-2xl text-red-400 font-medium text-center"
+                >
+                  No Seat Booked
+                </h3>
+                <!-- <li
+                  class="flex justify-between items-center text-base text-[#030712]/70 my-3"
+                >
+                  <p>C2</p>
+                  <p>Economy</p>
+                  <p>550</p>
+                </li> -->
+              </ul>
+              <div class="border-b-2 my-4"></div>
+
+              <!-- total price  -->
+              <div class="flex justify-between items-center">
+                <p class="text-lg font-medium">Total Price</p>
+                <p class="text-lg font-medium">BDT <span>****</span></p>
+              </div>
+
+              <!-- have a cupon here -->
+              <div class="relative my-5">
+                <input
+                  disabled
+                  class="w-full p-5 rounded-xl text-sm text-[#030712]/40 outline-none"
+                  type="text"
+                  placeholder="Have Any Copupon?"
+                />
+                <button
+                  class="px-4 py-[10px] bg-primary text-white rounded-xl absolute right-2 top-1/2 -translate-y-1/2 hover:bg-[#030712]/80 duration-200 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled
+                >
+                  Apply
+                </button>
+              </div>
+
+              <!-- grand total button  -->
+              <!-- total price  -->
+              <div class="flex justify-between items-center">
+                <p class="text-lg font-medium">Grand Total</p>
+                <p class="text-lg font-medium">BDT <span>****</span></p>
+              </div>
+            </div>
+
+            <!-- submit form here -->
+            <div class="mt-6">
+              <div class="mb-6">
+                <label class="text-base font-semibold block mb-3"
+                  >Passenger Name*</label
+                >
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  class="w-full rounded-xl p-5 border-[1px] border-[#030712]/10"
+                />
+              </div>
+              <div class="mb-6">
+                <label class="text-base font-semibold block mb-3"
+                  >Phone Number*</label
+                >
+                <input
+                  type="text"
+                  placeholder="Enter your phone number"
+                  class="w-full rounded-xl p-5 border-[1px] border-[#030712]/10"
+                />
+              </div>
+              <div class="mb-6">
+                <label class="text-base font-semibold block mb-3"
+                  >Email ID</label
+                >
+                <input
+                  type="text"
+                  placeholder="Enter your email id"
+                  class="w-full rounded-xl p-5 border-[1px] border-[#030712]/10"
+                />
+              </div>
+
+              <button
+                class="w-full bg-primary text-white px-5 py-4 font-semibold rounded-xl disabled:opacity-40"
+                disabled
+              >
+                Next
+              </button>
+            </div>
+
+            <!-- footer link  -->
+            <div
+              class="flex justify-evenly text-base text-[#030712]/70 items-center mt-4"
+            >
+              <a class="hover:underline cursor-pointer" href="#"
+                >Terms and Conditions</a
+              >
+              <a class="hover:underline cursor-pointer" href="#"
+                >Cancellation Policy</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- seat booking option  -->
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
