@@ -526,7 +526,7 @@
               </div>
 
               <!-- have a cupon here -->
-              <div class="relative my-5">
+              <div class="relative my-5" id="cupon-form">
                 <input
                   id="cupon-input"
                   disabled
@@ -547,7 +547,9 @@
               <!-- total price  -->
               <div class="flex justify-between items-center">
                 <p class="text-lg font-medium">Grand Total</p>
-                <p class="text-lg font-medium">BDT <span>****</span></p>
+                <p class="text-lg font-medium">
+                  BDT <span id="grand-total">****</span>
+                </p>
               </div>
             </div>
 
@@ -568,6 +570,7 @@
                   >Phone Number*</label
                 >
                 <input
+                  id="phone-number"
                   type="text"
                   placeholder="Enter your phone number"
                   class="w-full rounded-xl p-5 border-[1px] border-[#030712]/10"
@@ -585,8 +588,10 @@
               </div>
 
               <button
+                id="next-btn"
                 class="w-full bg-primary text-white px-5 py-4 font-semibold rounded-xl disabled:opacity-40"
                 disabled
+                onclick="my_modal_1.showModal()"
               >
                 Next
               </button>
@@ -603,6 +608,26 @@
                 >Cancellation Policy</a
               >
             </div>
+
+            <!-- modal section  -->
+            <div>
+              <!-- Open the modal using ID.showModal() method -->
+              <dialog id="my_modal_1" class="modal">
+                <div class="modal-box">
+                  <h3 class="text-lg font-bold">Hello!</h3>
+                  <p class="py-4">
+                    Press ESC key or click the button below to close
+                  </p>
+                  <div class="modal-action">
+                    <form method="dialog">
+                      <!-- if there is a button in form, it will close the modal -->
+                      <button class="btn" id="btn-continue">Continue</button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
+            </div>
+            <!-- modal section  -->
           </div>
         </div>
         <!-- seat booking option  -->
